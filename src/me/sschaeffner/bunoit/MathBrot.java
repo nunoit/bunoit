@@ -6,8 +6,8 @@ public class MathBrot {
 		NutSet set = new NutSet(width, height);
 		for (int xc = 0; xc < width; xc++) {
 			for (int yc = 0; yc < height; yc++) {
-				double a = xc - (width / 2);
-				double b = yc - (height / 2);
+				double a = (xc - (width * 0.5)) / ((width * 0.5) * zoom);
+				double b = (yc - (height * 0.5)) / ((height * 0.5) * zoom);
 				set.setPixel(xc, yc, isElement(a, b, maxIterations));
 			}
 		}

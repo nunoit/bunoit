@@ -21,7 +21,7 @@ public class MandelDisplay {
 		//init MATH
 		cShiftX = 0;
 		cShiftY = 0;
-		cZoom = 2;
+		cZoom = 0.45;
 		maxIterations = 400;
 		
 		width = 800;
@@ -51,12 +51,11 @@ public class MandelDisplay {
 						g.setColor(Color.BLACK);
 						g.fillRect(x, y, 1, 1);
 					} else {
-						g.setColor(Color.WHITE);
+						g.setColor(AppleColor.getColorForN(nuts[x][y], maxIterations));
 						g.fillRect(x, y, 1, 1);
 					}
 				}
 			}
-			
 		}
 	}
 }

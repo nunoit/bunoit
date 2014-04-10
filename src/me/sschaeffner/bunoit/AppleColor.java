@@ -7,9 +7,13 @@ public class AppleColor {
 		int r = 0, g = 0, b = 255;
 		
 		double part = ((double) n / maxIterations) * (double) (maxIterations / 4);
+		part = part * f(part);
 		
 		if (part > 1) {
 			part = 1;
+		}
+		if (part < 0) {
+			part = 0;
 		}
 		
 		//mehr iterationen (part näher 1) -> mehr rot
@@ -21,5 +25,13 @@ public class AppleColor {
 		}*/
 		
 		return new Color(r, g, b);
+	}
+	
+	static double f(double n) {
+		//-(tan(x / 2 - 1.51) / 15) - 0.105
+		
+		double r = - (Math.tan(n / 2 - 1.51) / 15) - 0.105;
+		
+		return r;
 	}
 }

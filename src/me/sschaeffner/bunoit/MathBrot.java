@@ -7,13 +7,13 @@ public class MathBrot {
 		long start = System.currentTimeMillis();
 		for (int xc = 0; xc < width; xc++) {
 			for (int yc = 0; yc < height; yc++) {
-				double a = (xc - (width * 0.5)) / ((width * 0.5) * zoom);
-				double b = (yc - (height * 0.5)) / ((height * 0.5) * zoom);
+				double a = (xc - (width * 0.5)) / ((width * 0.5) * zoom) + (shiftX / zoom);
+				double b = (yc - (height * 0.5)) / ((height * 0.5) * zoom) + (shiftY / zoom);
 				set.setPixel(xc, yc, isElement(a, b, maxIterations));
 			}
 		}
 		long time = System.currentTimeMillis() - start;
-		System.out.println(time);
+		System.out.println("calculation time: " + time);
 		return set;
 	}
 	

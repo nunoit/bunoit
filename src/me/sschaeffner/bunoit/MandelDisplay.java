@@ -1,10 +1,15 @@
 package me.sschaeffner.bunoit;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class MandelDisplay {
 	
@@ -16,6 +21,7 @@ public class MandelDisplay {
 	//DISPLAY VARS
 	JFrame frame;
 	MandelPanel panel;
+	BrotSetter setterPanel;
 	
 	MandelDisplay () {
 		//init MATH
@@ -29,18 +35,26 @@ public class MandelDisplay {
 		
 		//init DISPLAY
 		frame = new JFrame("bonuit");
-		frame.setSize(width, height);
+		//frame.setResizable(false);
 		
 		panel = new MandelPanel();
+		setterPanel = new BrotSetter();		
 		
+		frame.add(BorderLayout.CENTER, panel);
+		frame.add(BorderLayout.EAST, setterPanel);
+		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		frame.add(panel);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 	
+	@SuppressWarnings("serial")
 	class MandelPanel extends JPanel {
+		
+		public MandelPanel() {
+			this.setPreferredSize(new Dimension(width, height));
+		}
+		
 		@Override
 		public void paint(Graphics g) {
 			super.paint(g);
@@ -58,6 +72,41 @@ public class MandelDisplay {
 					}
 				}
 			}
+		}
+	}
+	
+	@SuppressWarnings("serial")
+	class BrotSetter extends JPanel {
+		
+		GridLayout gridL;
+		
+		JLabel shiftXLabel, shiftYLabel, zoomLabel, maxIterationsLabel;
+		JTextField shiftXTF, shiftYTF, zoomTF, maxIterationsTF;
+		
+		public BrotSetter() {
+			gridL = new GridLayout(0, 2);
+			this.setLayout(gridL);
+			this.setPreferredSize(new Dimension(300, 300));
+			
+			shiftXLabel = new JLabel("shift x");
+			shiftXTF = new JTextField("" + cShiftX, 50);
+			this.add(shiftXLabel);
+			this.add(shiftXTF);
+			
+			shiftYLabel = new JLabel("shift y");
+			shiftYTF = new JTextField("" + cShiftY, 50);
+			this.add(shiftYLabel);
+			this.add(shiftYTF);
+			
+			zoomLabel = new JLabel("zoom");
+			zoomTF = new JTextField("" + cZoom, 50);
+			this.add(zoomLabel);
+			this.add(zoomTF);
+			
+			maxIterationsLabel = new JLabel("max Iterations");
+			maxIterationsTF = new JTextField("" + maxIterations, 50);
+			this.add(maxIterationsLabel);
+			this.add(maxIterationsTF);
 		}
 	}
 }

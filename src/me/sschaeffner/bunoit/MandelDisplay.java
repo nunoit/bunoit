@@ -33,6 +33,8 @@ public class MandelDisplay {
 		
 		panel = new MandelPanel();
 		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		frame.add(panel);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

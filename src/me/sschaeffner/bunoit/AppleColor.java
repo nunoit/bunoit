@@ -16,9 +16,9 @@ public class AppleColor {
 		r = (int) Math.round(255 * part);
 		b = 255 - r;
 		
-		if (r != 0) {
+		/*if (r != 0) {
 			System.out.println("n=" + n + "; part=" + part + "; r=" + r + "; b=" + b + ";");
-		}
+		}*/
 		
 		return new Color(r, g, b);
 	}

@@ -4,6 +4,7 @@ public class MathBrot {
 	
 	public static NutSet getNutSet (double shiftX, double shiftY, double zoom, int width, int height, int maxIterations) {
 		NutSet set = new NutSet(width, height);
+		long start = System.currentTimeMillis();
 		for (int xc = 0; xc < width; xc++) {
 			for (int yc = 0; yc < height; yc++) {
 				double a = (xc - (width * 0.5)) / ((width * 0.5) * zoom);
@@ -11,7 +12,8 @@ public class MathBrot {
 				set.setPixel(xc, yc, isElement(a, b, maxIterations));
 			}
 		}
-		
+		long time = System.currentTimeMillis() - start;
+		System.out.println(time);
 		return set;
 	}
 	

@@ -16,8 +16,8 @@ public class MandelbrotBaecker {
 
 	private List<Nut> nuts;
 	
-	private double zoom = 400000;
-	private double shiftX = 80020000;
+	private double zoom = 0.45;
+	private double shiftX = 0;
 	private double shiftY = 0;
 	private int maxIterations = 400;
 	
